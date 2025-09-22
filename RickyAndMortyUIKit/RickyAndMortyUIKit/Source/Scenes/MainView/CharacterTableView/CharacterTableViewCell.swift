@@ -12,7 +12,7 @@ class UserTableViewCell: UITableViewCell {
     private let containerView = UIView()
     let characterImageView = UIImageView()
     let nameLabel = UILabel()
-    private let statusDot = UIView() // opcional para status
+    private let statusDot = UIView()
     
     override init(style: UITableViewCell.CellStyle,reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -81,8 +81,6 @@ class UserTableViewCell: UITableViewCell {
     
     func configure(with character: Character) {
         nameLabel.text = character.name
-        
-        // color por estado (Alive/Dead/unknown)
         let status = character.status.lowercased()
         if status == "alive" { statusDot.backgroundColor = .systemGreen }
         else if status == "dead" { statusDot.backgroundColor = .systemRed }

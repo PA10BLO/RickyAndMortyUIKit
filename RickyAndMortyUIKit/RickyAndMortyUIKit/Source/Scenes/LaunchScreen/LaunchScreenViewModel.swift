@@ -7,12 +7,8 @@
 
 import UIKit
 
-protocol BaseViewControllerProtocol {
-    func setupScene()
-}
-
-class LaunchScreenViewModel: UIViewController, BaseViewControllerProtocol {
-    func setupScene() { }
+class LaunchScreenViewModel: UIViewController {
+    internal func setupScene() { }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +16,20 @@ class LaunchScreenViewModel: UIViewController, BaseViewControllerProtocol {
     }
     
     private func setupMainView() {
-        self.navigationController?.pushViewController(MainViewController(), animated: false)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: MainViewController.self))
+        
+        guard let mainViewController = storyboard.instantiateInitialViewController() as? MainViewController else {
+            assertionFailure("Unable to instantiate MainViewController from Main.storyboard")
+            return
+        }
+        
+        mainViewController.setupScene()
+        
+        if let navigationController {
+            navigationController.setViewControllers([mainViewController], animated: false)
+        } else {
+            present(mainViewController, animated: false)
+        }
     }
     
 }

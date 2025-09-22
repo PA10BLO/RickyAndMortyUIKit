@@ -7,38 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "598EFBF6-3539-43F2-BCDF-D42329CAB37C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyAndMortyUIKit/Source/Scenes/CharacterDetailView/CharacterDetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE413EF6-5377-46E7-9489-22600B57802B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyAndMortyUIKit/Source/Scenes/CharacterDetailView/CharacterDetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "setupView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "CD6248D1-00F3-4630-9058-4CBB4FB7EF31"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -46,40 +14,10 @@
             filePath = "RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CD6248D1-00F3-4630-9058-4CBB4FB7EF31 - 90cf00d812dd93ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickyAndMortyUIKit.MainViewController.setupView() -&gt; ()"
-                  moduleName = "RickyAndMortyUIKit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pablo/Documents/GitHub/RickyAndMortyUIKit/RickyAndMortyUIKit/RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56">
-               </Location>
-               <Location
-                  uuid = "CD6248D1-00F3-4630-9058-4CBB4FB7EF31 - df73983a5975944"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickyAndMortyUIKit.MainViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "RickyAndMortyUIKit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pablo/Documents/GitHub/RickyAndMortyUIKit/RickyAndMortyUIKit/RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -92,40 +30,10 @@
             filePath = "RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "setupView()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BF94E12F-BAD7-4343-817F-E7B0466BB7EF - 20675159fbc750c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickyAndMortyUIKit.MainViewController.display(characters: Swift.Array&lt;RickyAndMortyUIKit.Character&gt;) -&gt; ()"
-                  moduleName = "RickyAndMortyUIKit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pablo/Documents/GitHub/RickyAndMortyUIKit/RickyAndMortyUIKit/RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70">
-               </Location>
-               <Location
-                  uuid = "BF94E12F-BAD7-4343-817F-E7B0466BB7EF - 90cf00d812dd9518"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickyAndMortyUIKit.MainViewController.setupView() -&gt; ()"
-                  moduleName = "RickyAndMortyUIKit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pablo/Documents/GitHub/RickyAndMortyUIKit/RickyAndMortyUIKit/RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -147,22 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "10304D37-94D7-44F8-9B01-58362857E56F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyAndMortyUIKit/Source/App/Delegate/SceneDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "scene(_:willConnectTo:options:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "3DA4EC8C-181B-4E65-BC1F-47B7947FE4B8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -170,26 +62,10 @@
             filePath = "RickyAndMortyUIKit/Source/App/Delegate/SceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "scene(_:willConnectTo:options:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "17B778A9-A503-4AED-B1F0-75622C2291AD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "MainViewController"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,40 +78,10 @@
             filePath = "RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "setupScene()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0B67EAE5-3B2B-49FC-BABC-C6356C725886 - df73983a5975a9d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickyAndMortyUIKit.MainViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "RickyAndMortyUIKit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pablo/Documents/GitHub/RickyAndMortyUIKit/RickyAndMortyUIKit/RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47">
-               </Location>
-               <Location
-                  uuid = "0B67EAE5-3B2B-49FC-BABC-C6356C725886 - e111614fa1bddfcf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RickyAndMortyUIKit.MainViewController.setupScene() -&gt; ()"
-                  moduleName = "RickyAndMortyUIKit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pablo/Documents/GitHub/RickyAndMortyUIKit/RickyAndMortyUIKit/RickyAndMortyUIKit/Source/Scenes/MainView/MainViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

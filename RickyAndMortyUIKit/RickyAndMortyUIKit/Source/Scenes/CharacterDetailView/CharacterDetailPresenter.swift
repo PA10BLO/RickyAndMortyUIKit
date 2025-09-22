@@ -31,7 +31,7 @@ class CharacterDetailPresenter: CharacterDetailPresenterLogic {
         view?.setLoading(true)
         view?.setupView()
         
-        // Montamos el VM base (sin episodio aún)
+        
         var rows: [(String, String)] = [
             ("Status", character.status),
             ("Species", character.species),
@@ -45,28 +45,40 @@ class CharacterDetailPresenter: CharacterDetailPresenterLogic {
             ("Last known location", character.location.name)
         ])
         
+        let subtitleComponents = [
+            character.species,
+            character.type.isEmpty ? nil : character.type,
+            character.gender
+        ].compactMap { $0 }.filter { !$0.isEmpty }
+        
         let baseVM = CharacterDetailViewModel(
             title: character.name,
+            subtitle: subtitleComponents.joined(separator: " • "),
+            status: character.status,
+            locationTitle: "Last known location",
+            locationValue: character.location.name,
             imageURL: URL(string: character.image),
             rows: rows
         )
         
         view?.display(viewModel: baseVM)
         
-        // Cargar datos extra en paralelo (p. ej. primer episodio)
         Task {
             guard let firstEpURLString = character.episode.first,
                   let firstEpURL = URL(string: firstEpURLString) else {
                 return
             }
             do {
-                // llamada a repo
                 let episode = try await repository.fetchEpisode(url: firstEpURL)
                 var enrichedRows = baseVM.rows
                 enrichedRows.insert(("First episode", "\(episode.episode) — \(episode.name)"), at: 1)
                 
                 let enrichedVM = CharacterDetailViewModel(
                     title: baseVM.title,
+                    subtitle: baseVM.subtitle,
+                    status: baseVM.status,
+                    locationTitle: baseVM.locationTitle,
+                    locationValue: baseVM.locationValue,
                     imageURL: baseVM.imageURL,
                     rows: enrichedRows
                 )

@@ -14,7 +14,7 @@ protocol MainViewPresenterLogic {
     func loadNextPage()
 }
 
-class MainViewController: UIViewController, BaseViewControllerProtocol {
+class MainViewController: UIViewController {
     
     
     
@@ -39,10 +39,6 @@ class MainViewController: UIViewController, BaseViewControllerProtocol {
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        presenter?.setupView()
-//    }
-//    
     func setupScene() {
         let viewController = self
         let setupPresenter = MainViewPresenter()
@@ -68,7 +64,6 @@ extension MainViewController: MainViewDisplayLogic {
         searchBar.delegate = self
         
         setupTableView()
-//        setupOverlays()
     }
     
     func display(characters: [Character]) {
@@ -103,20 +98,6 @@ extension MainViewController: MainViewDisplayLogic {
             tableView.bottomAnchor.constraint(equalTo: contentContainer.bottomAnchor)
         ])
     }
-    
-    private func setupOverlays() {
-        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(emptyLabel)
-        view.addSubview(spinner)
-        NSLayoutConstraint.activate([
-            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-        spinner.startAnimating()
-    }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
@@ -138,7 +119,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         tableView.deselectRow(at: indexPath, animated: true)
         let character = characters[indexPath.row]
         let vc = CharacterDetailViewController(character: character)
-        self.present(vc, animated: true)
+        if let navigationController {
+            navigationController.pushViewController(vc, animated: true)
+        } else {
+            present(vc, animated: true)
+        }
     }
 }
 
@@ -152,7 +137,6 @@ extension MainViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
-    // MARK: - Simple debounce (sin Combine)
     private static var pendingWorkItem: DispatchWorkItem?
     
     private func debounceSearch(_ text: String) {
