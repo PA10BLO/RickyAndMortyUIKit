@@ -19,72 +19,88 @@ class MainViewController: UIViewController {
     
     
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var contentTableView: UIStackView!
+    @IBOutlet weak var contentContainer: UIView!
     let tableView = UITableView()
     var presenter: MainViewPresenterLogic?
     private var characters: [Character] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let viewController = self
-        let setupPresenter = MainViewPresenter()
+    private let emptyLabel: UILabel = {
+        let l = UILabel()
+        l.text = "Sin resultados"
+        l.textAlignment = .center
+        l.textColor = .secondaryLabel
+        l.isHidden = true
+        return l
+    }()
+    
+    private let spinner = UIActivityIndicatorView(style: .large)
+    
+    override func viewIsAppearing(_ animated: Bool) {
         
-        setupPresenter.view = viewController
-        presenter = setupPresenter
-        presenter?.setupView()
     }
     
+    func setupScene() {
+        let viewController = self
+        let setupPresenter = MainViewPresenter()
+        setupPresenter.view = viewController
+        presenter = setupPresenter
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        presenter?.setupView()
+    }
 }
-
 
 extension MainViewController: MainViewDisplayLogic {
     
     func setupView() {
-        setupComponents()
+        title = "Rick & Morty"
+        view.backgroundColor = .systemBackground
+        
+        searchBar.searchBarStyle = .minimal
+        searchBar.isTranslucent = true
+        searchBar.delegate = self
+        
+        setupTableView()
     }
     
     func display(characters: [Character]) {
         self.characters = characters
+        emptyLabel.isHidden = !characters.isEmpty
+        spinner.stopAnimating()
         tableView.reloadData()
     }
     
     func displayError(_ message: String) {
-        // Presenta una alerta sencilla
+        spinner.stopAnimating()
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
     
-    private func setupComponents() {
-        searchBar.searchBarStyle = .minimal
-        searchBar.isTranslucent = true
-        setupTableView()
-    }
-    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UserTableViewCell.self,
-                           forCellReuseIdentifier: "CharacterCell")
+        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "CharacterCell")
         tableView.separatorStyle = .none
         tableView.rowHeight = 65
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .automatic
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        contentTableView.addSubview(tableView)
         
+        contentContainer.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: contentTableView.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: contentTableView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: contentTableView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: contentTableView.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: contentContainer.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: contentContainer.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: contentContainer.bottomAnchor)
         ])
     }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         characters.count
     }
@@ -101,19 +117,35 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // Navegar a detalle si quieres
+        let character = characters[indexPath.row]
+        let vc = CharacterDetailViewController(character: character)
+        if let navigationController {
+            navigationController.pushViewController(vc, animated: true)
+        } else {
+            present(vc, animated: true)
+        }
     }
 }
 
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // Búsqueda live. Puedes añadir debounce si lo prefieres.
-        presenter?.search(name: searchText)
+        debounceSearch(searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         presenter?.search(name: searchBar.text)
         searchBar.resignFirstResponder()
+    }
+    
+    private static var pendingWorkItem: DispatchWorkItem?
+    
+    private func debounceSearch(_ text: String) {
+        MainViewController.pendingWorkItem?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            self?.presenter?.search(name: text)
+        }
+        MainViewController.pendingWorkItem = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: work)
     }
 }
 
@@ -122,8 +154,6 @@ extension MainViewController: UIScrollViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
-
-        // Cuando nos acercamos al final (último 1.5 pantallas de altura)
         if offsetY > contentHeight - height * 1.5 {
             presenter?.loadNextPage()
         }

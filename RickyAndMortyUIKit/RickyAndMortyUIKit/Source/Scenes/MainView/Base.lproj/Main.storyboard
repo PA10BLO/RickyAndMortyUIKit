@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentTableView" destination="70M-RQ-pcN" id="DnZ-wx-dAH"/>
+                        <outlet property="contentContainer" destination="70M-RQ-pcN" id="AiK-yf-YXQ"/>
                         <outlet property="searchBar" destination="rA0-ct-F0X" id="EQb-T0-cff"/>
                     </connections>
                 </viewController>
