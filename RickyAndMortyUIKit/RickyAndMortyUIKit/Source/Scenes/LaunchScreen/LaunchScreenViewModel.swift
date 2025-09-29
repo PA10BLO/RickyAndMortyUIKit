@@ -8,7 +8,6 @@
 import UIKit
 
 class LaunchScreenViewModel: UIViewController {
-    internal func setupScene() { }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +23,7 @@ class LaunchScreenViewModel: UIViewController {
         }
         
         mainViewController.setupScene()
-        
-        if let navigationController {
-            navigationController.setViewControllers([mainViewController], animated: false)
-        } else {
-            present(mainViewController, animated: false)
-        }
+        navigationController?.setViewControllers([mainViewController], animated: false)
     }
     
 }

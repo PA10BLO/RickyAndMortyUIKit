@@ -16,8 +16,6 @@ protocol MainViewPresenterLogic {
 
 class MainViewController: UIViewController {
     
-    
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var contentContainer: UIView!
     let tableView = UITableView()
@@ -32,12 +30,6 @@ class MainViewController: UIViewController {
         l.isHidden = true
         return l
     }()
-    
-    private let spinner = UIActivityIndicatorView(style: .large)
-    
-    override func viewIsAppearing(_ animated: Bool) {
-        
-    }
     
     func setupScene() {
         let viewController = self
@@ -69,12 +61,10 @@ extension MainViewController: MainViewDisplayLogic {
     func display(characters: [Character]) {
         self.characters = characters
         emptyLabel.isHidden = !characters.isEmpty
-        spinner.stopAnimating()
         tableView.reloadData()
     }
     
     func displayError(_ message: String) {
-        spinner.stopAnimating()
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)

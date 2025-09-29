@@ -6,8 +6,6 @@
 //  Created by Pablo on 22/9/25.
 //
 
-// CharacterDetailViewController.swift
-
 import UIKit
 
 protocol CharacterDetailPresenterLogic {
